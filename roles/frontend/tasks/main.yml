@@ -2,7 +2,6 @@
 #systemctl restart nginx &>>$log_file
 #systemctl enable nginx &>>$log_file
 #func_stat_check $?
-
 - name: Install Nginx
   ansible.builtin.yum:
     name: nginx
