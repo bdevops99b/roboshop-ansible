@@ -1,0 +1,22 @@
+#func_print_head "Load Schema "
+#mongo --host mongodb-dev.panda4u.online </app/schema/${component}.js &>>$log_file
+#func_stat_check $?
+
+- Name: Copy MongoDB repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+  when: schema_setup == "mongo"
+
+- Name: Install MongoDB Client
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+  when: schema_setup == "mongo"
+
+- Name: Load Schema
+  ansible.builtin.shell: mongo --host {{ lookup('aws_ssm', 'dev.catalogue.mongo_endpoint', region='us-east-1' ) }} </app/schema/${{component}}.js
+  when: schema_setup == "mongo"
+
+
+
