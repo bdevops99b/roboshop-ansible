@@ -2,11 +2,20 @@
 Description = Cart Service
 [Service]
 User=roboshop
-Environment=REDIS_HOST=redis-dev.panda4u.online
-Environment=CATALOGUE_HOST=catalogue-dev.panda4u.online
-Environment=CATALOGUE_PORT=8080
+Environment=REDIS_HOST={{ lookup('aws_ssm', 'dev.cart.redis_host', region='us-east-1' ) }}
+Environment=CATALOGUE_HOST={{ lookup('aws_ssm', 'dev.cart.catalogue_endpoint', region='us-east-1' ) }}
+Environment=CATALOGUE_PORT={{ lookup('aws_ssm', 'dev.cart.catalogue_port', region='us-east-1' ) }}
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=cart
 
 [Install]
 WantedBy=multi-user.target
+
+
+# "{{ lookup('aws_ssm', 'dev.cart.redis_host', region='us-east-1' ) }}"
+"{{ lookup('aws_ssm', 'dev.cart.catalogue_endpoint', region='us-east-1' ) }}"
+"{{ lookup('aws_ssm', 'dev.cart.catalogue_port', region='us-east-1' ) }}"
+
+{ name = "dev.cart.redis_host", value = "redis-dev.panda4u.online" },
+  { name = "dev.cart.catalogue_endpoint", value = "catalogue-dev.panda4u.online" },
+  { name = "dev.cart.catalogue_port", value = "8080" }
