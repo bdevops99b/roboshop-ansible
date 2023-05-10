@@ -10,7 +10,7 @@
     name: nodejs
     state: installed
 
-- name: Include task list in play - Import of a yml file from roles-common-tasks
+- name: Include app pre-requisites
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
@@ -18,6 +18,8 @@
   ansible.builtin.shell: npm install
   args:
     chdir: /app
-
+- name: Include schema setup
+  ansible.builtin.import_tasks:
+    file: schema_setup.yml
 
 
