@@ -10,12 +10,3 @@ SyslogIdentifier=cart
 
 [Install]
 WantedBy=multi-user.target
-
-
-# "{{ lookup('aws_ssm', 'dev.cart.redis_host', region='us-east-1' ) }}"
-"{{ lookup('aws_ssm', 'dev.cart.catalogue_endpoint', region='us-east-1' ) }}"
-"{{ lookup('aws_ssm', 'dev.cart.catalogue_port', region='us-east-1' ) }}"
-
-{ name = "dev.cart.redis_host", value = "redis-dev.panda4u.online" },
-  { name = "dev.cart.catalogue_endpoint", value = "catalogue-dev.panda4u.online" },
-  { name = "dev.cart.catalogue_port", value = "8080" }
