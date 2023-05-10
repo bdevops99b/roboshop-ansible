@@ -1,6 +1,4 @@
 
-#func_systemd_setup
-
 - name: Configuring NodeJS repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x
 
@@ -17,8 +15,14 @@
   ansible.builtin.shell: npm install
   args:
     chdir: /app
+
 - name: Include schema setup
   ansible.builtin.import_tasks:
     file: schema_setup.yml
+
+- name: Include SystemDsetup
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
+
 
 
