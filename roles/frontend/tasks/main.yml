@@ -18,7 +18,7 @@
     state: absent
 
 - name: Create app directory
-  ansible.builtin.template:
+  ansible.builtin.file:
     path: /usr/share/nginx/html
     state: directory
 
