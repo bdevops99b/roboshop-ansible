@@ -1,2 +1,2 @@
-component: catalogue
+component: user
 schema_setup: mongo
