@@ -1,4 +1,4 @@
-- name: Demo
-  ansible.builtin.debug:
-    msg: Component - shiping
-
+- name: Import Common NodeJS
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: java
