@@ -1,6 +1,6 @@
 filebeat.inputs:
   - type: filestream
-    id: {{componet}}
+    id: {{component}}
     enabled: true
     paths:
       - {{ log_file }}
