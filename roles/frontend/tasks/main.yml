@@ -3,6 +3,11 @@
     name: nginx
     state: installed
 
+- name: Copy Nginx Config file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: Copy roboshop Config file
   ansible.builtin.template:
     src: roboshop.conf
