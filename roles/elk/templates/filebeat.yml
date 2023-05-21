@@ -19,3 +19,6 @@ filebeat.config.modules:
 
 setup.template.settings:
   index.number_of_shards: 1
+processors:
+  - drop_fields:
+      fields: ["host.name", "ecs.version", "agent.version", "agent.type", "agent.id", "agent.ephemeral_id", "agent.hostname", "input.type"]
