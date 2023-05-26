@@ -1,7 +1,4 @@
 
-#func_schema_setup
-#func_systemd_setup
-
 - name: Install Maven
   ansible.builtin.yum:
     name: maven
