@@ -10,7 +10,7 @@
 
 - name: Wait for promethues is started or not
   ansible.builtin.wait_for:
-    port: 8000
+    port: 9090
     delay: 10
     timeout: 15
 
