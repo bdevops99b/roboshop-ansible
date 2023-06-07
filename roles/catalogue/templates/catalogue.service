@@ -3,10 +3,14 @@ Description = Catalogue Service
 
 [Service]
 User={{app_user}}
-Environment={{ lookup('aws_ssm', '{{env}}.catalogue.mongo', region='us-east-1' ) }}
-Environment=MONGO_URL="{{ lookup('aws_ssm', '{{env}}.catalogue.mongo_url', region='us-east-1' ) }}"
+Environment={{ lookup('aws_ssm', '{{ env }}.catalogue.mongo', region='us-east-1' ) }}
+Environment=MONGO_URL="{{ lookup('aws_ssm', '{{ env }}.catalogue.mongo_url', region='us-east-1' ) }}"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=catalogue
 
 [Install]
 WantedBy=multi-user.target
+
+
+#  { name = "dev.catalogue.mongo_url", value = "mongodb://roboshop:roboshop12345@docdb-dev.cluster-ckxjifubkfou.us-east-1.docdb.amazonaws.com:27017/catalogue?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false" }
+# { name = "dev.catalogue.mongo", value = "DOCUMENTDB=true" },
