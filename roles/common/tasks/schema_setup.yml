@@ -13,10 +13,10 @@
         name: mongodb-org-shell
         state: installed
 
-#    - name: Download DocDB PEM File
-#      ansible.builtin.get_url:
-#        url: https://truststore.pki.rds.amazonaws.com/us-east-1/us-east-1-bundle.pem
-#        dest: /app/rds-combined-ca-bundle.pem
+    - name: Download DocDB PEM File
+      ansible.builtin.get_url:
+        url: https://truststore.pki.rds.amazonaws.com/us-east-1/us-east-1-bundle.pem
+        dest: /app/rds-combined-ca-bundle.pem
 
 
     - name: Load Schema
