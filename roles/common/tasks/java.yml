@@ -6,7 +6,7 @@
 
 - name: Install Java
   ansible.builtin.yum:
-    name: jave-17-openjdk
+    name: java-17-openjdk
 
 - name: Include app pre-requisites
   ansible.builtin.import_tasks:
