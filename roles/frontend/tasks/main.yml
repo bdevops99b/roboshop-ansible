@@ -23,7 +23,7 @@
     path: /usr/share/nginx/html
     state: directory
 
-#- name: Download App Content
+#- name: Download App Contents
 #  ansible.builtin.unarchive:
 #    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
 #    dest: /usr/share/nginx/html
