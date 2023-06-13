@@ -8,14 +8,10 @@ label 'workstation'
 parameters {
 choice(name: 'env', choices: ['dev', 'prod'], description: 'Pick environment')
 string(name: 'component', defaultValue: '', description: 'component name')
-string(name: 'app_version', defaultValue: '', description: 'App Version to deploy')
+
 }
 stages {
-stage('Update Parameter Store') {
-      steps {
-        sh 'aws ssm put-parameter --name "${env}.${component}.app_version" --type "String" --value "${app_version}" --overwrite'
-      }
-    }
+
  stage('Anisible'){
  steps {
   sh 'aws ec2 describe-instances --filters Name=tag:Name,Values=${component}-${env} Name=instance-state-name,Values=running --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text >/tmp/inv'
