@@ -1,3 +1,4 @@
 component: shipping
 schema_setup: mysql
 app_version: 1.0.1
+force_schema_reload: false
